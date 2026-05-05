@@ -8,7 +8,7 @@
 <rect width="1800" height="1050" fill="url(#g)"/><rect width="1800" height="1050" filter="url(#grain)" opacity=".8"/>
 <path d="M120 820 C 340 660, 620 720, 860 565 C 1110 405, 1320 420, 1630 520" fill="none" stroke="white" stroke-opacity=".12" stroke-width="8"/>
 <circle cx="1400" cy="230" r="115" fill="white" opacity=".045"/>
-<text x="110" y="170" font-family="Arial Black, Arial" font-size="96" fill="white" letter-spacing="-5">STARTLINIE</text>
-<text x="114" y="250" font-family="Arial" font-size="36" fill="#bbbbbb">Jede Stunde dieselbe Linie</text>
+<text x="110" y="170" font-family="Arial Black, Arial" font-size="96" fill="white" letter-spacing="-5">CREW</text>
+<text x="114" y="250" font-family="Arial" font-size="36" fill="#bbbbbb">Galeriebild ersetzen</text>
 <text x="114" y="940" font-family="Arial Black, Arial" font-size="42" fill="white" opacity=".20">Platzhalterbild ersetzen</text>
 </svg>

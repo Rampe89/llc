@@ -1,13 +1,17 @@
-LLC Website – Netlify-ready
+LLC Ultra Polish Website
 
 Upload:
-1. ZIP entpacken.
-2. Den kompletten Ordnerinhalt zu Netlify ziehen.
-3. index.html liegt direkt im Hauptordner.
+- ZIP entpacken
+- Inhalt direkt zu Netlify ziehen
+- index.html liegt im Hauptverzeichnis
+
+Logos:
+- assets/img/logo-llc.png
+- assets/img/logo-tsv.png
 
 Bilder ersetzen:
-- Hero: assets/img/hero-llc.svg ersetzen durch hero-llc.jpg
-  Dann in assets/css/site.css den Pfad ändern:
+- Hero: assets/img/hero-llc.svg
+  Entweder durch hero-llc.jpg ersetzen und in assets/css/site.css ändern:
   url("../img/hero-llc.svg") -> url("../img/hero-llc.jpg")
 
 - Feeling:
@@ -16,10 +20,6 @@ Bilder ersetzen:
   assets/img/night.svg
 
 - Galerie:
-  assets/img/gallery-01.svg bis gallery-06.svg
+  assets/img/gallery/gallery-01.svg bis gallery-06.svg
 
-Logos:
-- assets/img/logos/logo-llc-white.png
-- assets/img/logos/logo-troete-white.png
-
-Die Original-Uploads liegen zusätzlich im Logo-Ordner.
+Archivlinks sind bereits eingebunden.
