@@ -5,13 +5,639 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lafferde Loop Challenge 2026 · Backyard Ultra</title>
   <meta name="description" content="Lafferde Loop Challenge 2026: Backyard Ultra in Klein Lafferde. 6,7 km jede Stunde. Last Person Standing." />
-  <link rel="stylesheet" href="assets/css/site.css" />
+
+  <style>
+    :root {
+      --forest-950: #000000;
+      --forest-900: #050505;
+      --forest-850: #0a0a0a;
+      --forest-800: #111111;
+      --forest-700: #1a1a1a;
+      --cream: #ffffff;
+      --cream-soft: #cccccc;
+      --muted: #888888;
+      --ember: #e2633b;
+      --ember-dark: #a73527;
+      --gold: #ffffff;
+      --wine: #7e1028;
+      --line: rgba(244, 234, 215, 0.16);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --max: 1180px;
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--forest-950);
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at top left, rgba(226, 99, 59, 0.16), transparent 34rem),
+        radial-gradient(circle at 80% 10%, rgba(241, 184, 91, 0.10), transparent 28rem),
+        linear-gradient(180deg, var(--forest-950), var(--forest-900) 35%, #08110c 100%);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.035;
+      background-image:
+        linear-gradient(rgba(255,255,255,.6) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mix-blend-mode: screen;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 40;
+      width: min(var(--max), calc(100% - 28px));
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 50px rgba(0,0,0,.26);
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-center {
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-logo.big {
+      height: 70px;
+      filter: brightness(0) invert(1);
+      opacity: 1;
+      transition: transform .25s ease, filter .25s ease, opacity .25s ease;
+    }
+
+    .nav-logo.big:hover {
+      transform: scale(1.08);
+      filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(255,255,255,.4));
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #1b1108;
+      background: linear-gradient(135deg, var(--gold), var(--ember));
+      box-shadow: 0 0 24px rgba(241,184,91,.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: .92rem;
+      color: var(--cream-soft);
+    }
+
+    .nav-links a:hover { color: var(--cream); }
+
+    .nav-cta, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      letter-spacing: .01em;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+
+    .nav-cta, .btn-primary {
+      background: var(--ember);
+      color: white;
+      box-shadow: 0 14px 32px rgba(226,99,59,.25);
+    }
+
+    .btn-secondary {
+      background: rgba(244,234,215,.08);
+      border-color: var(--line);
+      color: var(--cream);
+    }
+
+    .btn:hover, .nav-cta:hover { transform: translateY(-2px); }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      padding: 130px 0 70px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-logo {
+      position: absolute;
+      top: 120px;
+      height: 160px;
+      filter: brightness(0) invert(1);
+      opacity: .12;
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-logo.left { left: 40px; }
+    .hero-logo.right { right: 40px; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .hero-logo.left { left: 40px; }
+    .hero-logo.right { right: 40px; }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(7,17,12,.92), rgba(7,17,12,.58) 46%, rgba(7,17,12,.82)),
+        linear-gradient(0deg, rgba(7,17,12,.98), rgba(7,17,12,.12) 45%, rgba(7,17,12,.72)),
+        url("assets/img/hero-llc.jpg") center/cover no-repeat;
+      filter: saturate(.9) contrast(1.04);
+      transform: scale(1.02);
+    }
+
+    .hero-light {
+      position: absolute;
+      inset: auto -10% 0 -10%;
+      height: 38%;
+      z-index: -1;
+      background: radial-gradient(ellipse at center, rgba(241,184,91,.16), transparent 62%);
+      filter: blur(12px);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      border: 1px solid rgba(241,184,91,.34);
+      border-radius: 999px;
+      background: rgba(241,184,91,.09);
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: var(--gold);
+      box-shadow: 0 0 18px var(--gold);
+    }
+
+    .hero h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3.4rem, 9vw, 8.8rem);
+      line-height: .86;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
+    }
+
+    .hero-subline {
+      max-width: 760px;
+      margin: 28px 0 0;
+      color: var(--cream-soft);
+      font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .hero-facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 56px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .fact {
+      background: rgba(15,31,22,.78);
+      padding: 22px;
+      backdrop-filter: blur(14px);
+    }
+
+    .fact small {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .72rem;
+      margin-bottom: 6px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      line-height: 1.05;
+    }
+
+    section {
+      padding: 96px 0;
+      border-bottom: 1px solid rgba(244,234,215,.08);
+    }
+
+    .section-kicker {
+      color: var(--ember);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .78rem;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      margin: 0;
+      max-width: 820px;
+      font-size: clamp(2.2rem, 5vw, 5.1rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+
+    .section-lead {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: var(--cream-soft);
+      font-size: 1.12rem;
+    }
+
+    .scroll-story {
+      background: linear-gradient(180deg, #07110c, #111f17, #07110c);
+    }
+
+    .story-lines {
+      display: grid;
+      gap: 22px;
+      margin-top: 44px;
+    }
+
+    .story-line {
+      font-size: clamp(2.3rem, 7vw, 7rem);
+      line-height: .92;
+      letter-spacing: -.06em;
+      font-weight: 950;
+      color: rgba(244,234,215,.18);
+    }
+
+    .story-line.is-hot { color: var(--cream); }
+    .story-line span { color: var(--ember); }
+
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .format-card, .quote-card, .info-card, .archive-card, .faq-item, .badge-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(244,234,215,.075), rgba(244,234,215,.035));
+      box-shadow: 0 16px 44px rgba(0,0,0,.18);
+    }
+
+    .format-card {
+      min-height: 250px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .format-card .num {
+      color: var(--gold);
+      font-size: 3rem;
+      font-weight: 950;
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .format-card h3 { margin: 0 0 10px; font-size: 1.25rem; }
+    .format-card p { margin: 0; color: var(--cream-soft); }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .photo-card {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--forest-800);
+    }
+
+    .photo-card.tall { min-height: 520px; }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: .84; }
+    .photo-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent, rgba(7,17,12,.8)); }
+    .photo-caption { position: absolute; left: 20px; right: 20px; bottom: 18px; z-index: 1; font-weight: 850; }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .quote-card {
+      padding: 28px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      font-size: 1.26rem;
+      line-height: 1.35;
+      font-weight: 720;
+    }
+
+    .quote-meta {
+      margin-top: 24px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      font-size: .92rem;
+    }
+
+    .badge-system-keep {
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(126,16,40,.34), transparent 26rem),
+        linear-gradient(180deg, var(--forest-900), #080f0b);
+    }
+
+    .badge-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .badge-card {
+      padding: 20px 14px;
+      text-align: center;
+    }
+
+    .animal {
+      width: 74px;
+      height: 74px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(241,184,91,.11);
+      border: 1px solid rgba(241,184,91,.32);
+      font-size: 2.1rem;
+      box-shadow: inset 0 0 28px rgba(241,184,91,.08);
+    }
+
+    .badge-card strong { display: block; }
+    .badge-card small { color: var(--muted); }
+
+    .info-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.5fr;
+      gap: 28px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .info-sticky {
+      position: sticky;
+      top: 110px;
+      border: 1px solid rgba(226,99,59,.32);
+      border-radius: var(--radius);
+      padding: 26px;
+      background: linear-gradient(180deg, rgba(226,99,59,.15), rgba(244,234,215,.04));
+      box-shadow: var(--shadow);
+    }
+
+    .info-sticky h3 { margin: 0 0 12px; font-size: 1.55rem; }
+    .info-sticky p { color: var(--cream-soft); }
+
+    .info-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    details.info-card {
+      overflow: hidden;
+    }
+
+    details summary {
+      list-style: none;
+      padding: 22px 24px;
+      cursor: pointer;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; color: var(--gold); font-size: 1.3rem; }
+    details[open] summary::after { content: "–"; }
+
+    .details-body {
+      padding: 0 24px 24px;
+      color: var(--cream-soft);
+    }
+
+    .details-body p { margin-top: 0; }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .archive-card {
+      padding: 26px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .archive-card h3 {
+      margin: 0;
+      font-size: 2.4rem;
+      letter-spacing: -.05em;
+    }
+
+    .archive-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .pill-link {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--cream-soft);
+      background: rgba(244,234,215,.04);
+      font-weight: 750;
+      font-size: .9rem;
+    }
+
+    .pill-link:hover { color: var(--cream); border-color: rgba(226,99,59,.7); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 48px;
+    }
+
+    .faq-item { padding: 24px; }
+    .faq-item h3 { margin: 0 0 8px; }
+    .faq-item p { margin: 0; color: var(--cream-soft); }
+
+    .contact {
+      background:
+        linear-gradient(90deg, rgba(126,16,40,.46), rgba(226,99,59,.18)),
+        linear-gradient(180deg, var(--forest-900), var(--forest-950));
+    }
+
+    .contact-box {
+      border: 1px solid rgba(244,234,215,.18);
+      border-radius: calc(var(--radius) + 10px);
+      padding: clamp(28px, 5vw, 64px);
+      background: rgba(7,17,12,.56);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .contact-box h2 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 5rem);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .contact-box p { color: var(--cream-soft); }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero-facts, .format-grid, .quote-grid, .archive-grid, .faq-grid, .contact-box, .info-layout { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr; }
+      .photo-card, .photo-card.tall { min-height: 320px; }
+      .badge-row { grid-template-columns: repeat(3, 1fr); }
+      .info-sticky { position: static; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .nav { top: 10px; }
+      .brand span { display: none; }
+      .hero { padding-top: 110px; }
+      section { padding: 72px 0; }
+      .badge-row { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions .btn { width: 100%; }
+    }
+  </style>
 </head>
 
 <body>
   <nav class="nav" aria-label="Hauptnavigation">
     <div class="nav-left">
-      <a href="#top" aria-label="Startseite"><img src="assets/img/logos/logo-llc-white.png" alt="RUN LLC" class="nav-logo llc"></a>
+      <img src="assets/img/logo-llc.png" alt="LLC Logo" class="nav-logo big">
     </div>
 
     <div class="nav-center">
@@ -19,7 +645,6 @@
         <a href="#format">Format</a>
         <a href="#feeling">Feeling</a>
         <a href="#stories">Stimmen</a>
-        <a href="#abzeichen">Abzeichen</a>
         <a href="#ausschreibung">Ausschreibung</a>
         <a href="#archiv">Archiv</a>
         <a href="#faq">FAQ</a>
@@ -27,15 +652,16 @@
     </div>
 
     <div class="nav-right">
-      <img src="assets/img/logos/logo-troete-white.png" alt="Tröte" class="nav-logo troete">
+      <img src="assets/img/logo-tsv.png" alt="TSV Klein Lafferde" class="nav-logo big">
       <a class="nav-cta" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">Warteliste</a>
     </div>
   </nav>
 
   <header class="hero" id="top">
+    <!-- Hero Side Logos -->
+    <img src="assets/img/logo-llc.png" alt="LLC" class="hero-logo left">
+    <img src="assets/img/logo-tsv.png" alt="TSV" class="hero-logo right">
     <div class="hero-bg" aria-hidden="true"></div>
-    <img src="assets/img/logos/logo-llc-white.png" alt="" class="hero-logo-side left" aria-hidden="true">
-    <img src="assets/img/logos/logo-troete-white.png" alt="" class="hero-logo-side right" aria-hidden="true">
     <div class="hero-light" aria-hidden="true"></div>
 
     <div class="wrap">
@@ -46,7 +672,7 @@
 
       <div class="hero-actions">
         <a class="btn btn-primary" href="#ausschreibung">Ausschreibung 2026</a>
-        <a class="btn btn-secondary" href="#gallery">Bilder & Geschichten</a>
+        <a class="btn btn-secondary" href="#stories">Bilder & Geschichten</a>
       </div>
 
       <div class="hero-facts" aria-label="Eventdaten">
@@ -80,10 +706,25 @@
         <p class="section-lead">Die LLC ist kein klassischer Wettkampf gegen die Uhr. Jede Runde beginnt neu. Jede volle Stunde stellt dieselbe Frage: Gehst du wieder an die Startlinie?</p>
 
         <div class="format-grid">
-          <article class="format-card"><div class="num">01</div><div><h3>6,7 km Runde</h3><p>Ein Rundkurs über befestigte Wege, Stock, Stein und Wald.</p></div></article>
-          <article class="format-card"><div class="num">02</div><div><h3>60 Minuten</h3><p>Wer rechtzeitig zurück ist, darf die Pause bis zum nächsten Start frei nutzen.</p></div></article>
-          <article class="format-card"><div class="num">03</div><div><h3>Neuer Start</h3><p>Nach jeder Stunde starten alle verbliebenen Läufer*innen gemeinsam wieder los.</p></div></article>
-          <article class="format-card"><div class="num">04</div><div><h3>Last Person Standing</h3><p>Das Rennen endet, wenn nur noch eine Person eine Runde im Zeitlimit schafft.</p></div></article>
+          <article class="format-card">
+            <div class="num">01</div>
+            <div><h3>6,7 km Runde</h3><p>Ein Rundkurs über befestigte Wege, Stock, Stein und Wald.</p></div>
+          </article>
+
+          <article class="format-card">
+            <div class="num">02</div>
+            <div><h3>60 Minuten</h3><p>Wer rechtzeitig zurück ist, darf die Pause bis zum nächsten Start frei nutzen.</p></div>
+          </article>
+
+          <article class="format-card">
+            <div class="num">03</div>
+            <div><h3>Neuer Start</h3><p>Nach jeder Stunde starten alle verbliebenen Läufer*innen gemeinsam wieder los.</p></div>
+          </article>
+
+          <article class="format-card">
+            <div class="num">04</div>
+            <div><h3>Last Person Standing</h3><p>Das Rennen endet, wenn nur noch eine Person eine Runde im Zeitlimit schafft.</p></div>
+          </article>
         </div>
       </div>
     </section>
@@ -95,26 +736,20 @@
         <p class="section-lead">Die LLC lebt nicht nur von der Strecke. Sie lebt vom Start-Ziel-Bereich, von Crews, kurzen Gesprächen, müden Blicken und dieser einen Frage kurz vor jeder vollen Stunde.</p>
 
         <div class="photo-strip">
-          <figure class="photo-card tall"><img src="assets/img/basecamp.svg" alt="Zelte und Basecamp"><figcaption class="photo-caption">Basecamp direkt am Start-Ziel-Bereich</figcaption></figure>
-          <figure class="photo-card"><img src="assets/img/start.svg" alt="Startlinie"><figcaption class="photo-caption">Jede Stunde dieselbe Linie</figcaption></figure>
-          <figure class="photo-card tall"><img src="assets/img/night.svg" alt="Nachtstimmung"><figcaption class="photo-caption">Wenn aus Laufen Kopfsache wird</figcaption></figure>
-        </div>
-      </div>
-    </section>
+          <figure class="photo-card tall">
+            <img src="assets/img/basecamp.jpg" alt="Zelte und Basecamp der Lafferde Loop Challenge" />
+            <figcaption class="photo-caption">Basecamp direkt am Start-Ziel-Bereich</figcaption>
+          </figure>
 
-    <section id="gallery">
-      <div class="wrap">
-        <div class="section-kicker">Galerie</div>
-        <h2 class="section-title">Bilder aus der Schleife.</h2>
-        <p class="section-lead">Ersetze die Platzhalterbilder im Ordner <strong>assets/img/</strong> durch echte Fotos. Die Namen kannst du behalten oder im HTML anpassen.</p>
+          <figure class="photo-card">
+            <img src="assets/img/start.jpg" alt="Läuferinnen und Läufer an der Startlinie" />
+            <figcaption class="photo-caption">Jede Stunde dieselbe Linie</figcaption>
+          </figure>
 
-        <div class="gallery-grid">
-          <a href="assets/img/gallery-01.svg" data-lightbox><img src="assets/img/gallery-01.svg" alt="Galeriebild 1"></a>
-          <a href="assets/img/gallery-02.svg" data-lightbox><img src="assets/img/gallery-02.svg" alt="Galeriebild 2"></a>
-          <a href="assets/img/gallery-03.svg" data-lightbox><img src="assets/img/gallery-03.svg" alt="Galeriebild 3"></a>
-          <a href="assets/img/gallery-04.svg" data-lightbox><img src="assets/img/gallery-04.svg" alt="Galeriebild 4"></a>
-          <a href="assets/img/gallery-05.svg" data-lightbox><img src="assets/img/gallery-05.svg" alt="Galeriebild 5"></a>
-          <a href="assets/img/gallery-06.svg" data-lightbox><img src="assets/img/gallery-06.svg" alt="Galeriebild 6"></a>
+          <figure class="photo-card tall">
+            <img src="assets/img/night.jpg" alt="Nachtstimmung mit Stirnlampen" />
+            <figcaption class="photo-caption">Wenn aus Laufen Kopfsache wird</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -126,9 +761,20 @@
         <p class="section-lead">Hier können echte Erfahrungsberichte aus 2023, 2024 und 2025 rein. Mit Name, Runden, Jahr und Foto wird daraus eine starke Story-Sektion.</p>
 
         <div class="quote-grid">
-          <article class="quote-card"><blockquote>„Irgendwann läufst du nicht mehr gegen andere. Du führst nur noch Gespräche mit dir selbst.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2025</span><strong>Runden: 12</strong></div></article>
-          <article class="quote-card"><blockquote>„Die härteste Runde war nicht die längste. Es war die, bei der ich fast nicht wieder gestartet wäre.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2024</span><strong>Runden: 9</strong></div></article>
-          <article class="quote-card"><blockquote>„Backyard klingt simpel. Bis die Tröte wieder ruft.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2023</span><strong>Runden: 7</strong></div></article>
+          <article class="quote-card">
+            <blockquote>„Irgendwann läufst du nicht mehr gegen andere. Du führst nur noch Gespräche mit dir selbst.“</blockquote>
+            <div class="quote-meta"><span>Teilnehmer*in 2025</span><strong>Runden: 12</strong></div>
+          </article>
+
+          <article class="quote-card">
+            <blockquote>„Die härteste Runde war nicht die längste. Es war die, bei der ich fast nicht wieder gestartet wäre.“</blockquote>
+            <div class="quote-meta"><span>Teilnehmer*in 2024</span><strong>Runden: 9</strong></div>
+          </article>
+
+          <article class="quote-card">
+            <blockquote>„Backyard klingt simpel. Bis die Tröte wieder ruft.“</blockquote>
+            <div class="quote-meta"><span>Teilnehmer*in 2023</span><strong>Runden: 7</strong></div>
+          </article>
         </div>
       </div>
     </section>
@@ -166,13 +812,60 @@
           </aside>
 
           <div class="info-list">
-            <details class="info-card" open><summary>Basics</summary><div class="details-body"><p>Die Lafferde Loop Challenge ist ein Backyard Ultra des TSV Klein Lafferde. Start ist am 02.05.2026 um 05:47 Uhr bei Sonnenaufgang.</p><p>Ort: Münstedter Weg 17, 38268 Lengede.</p></div></details>
-            <details class="info-card"><summary>Strecke & GPX</summary><div class="details-body"><p>6,7 km Rundkurs über befestigte Wege, Stock, Stein und Wald. Die Strecke wird mit Straßenmalkreide markiert. Am Ende bleibt jede*r selbst verantwortlich, auf der Strecke zu bleiben.</p><p><a class="pill-link" href="https://connect.garmin.com/app/activity/22014434779" target="_blank" rel="noreferrer">GPX / Garmin öffnen</a></p></div></details>
-            <details class="info-card"><summary>Regeln</summary><div class="details-body"><p>Alle Teilnehmer*innen haben 60 Minuten pro Runde. Wer die Runde nicht im Zeitlimit schafft oder nicht zum nächsten Start im Startbereich ist und die Startlinie überquert, scheidet aus.</p><p>Kein persönlicher Support auf der Strecke. Keine Hilfsmittel wie Stöcke.</p></div></details>
-            <details class="info-card"><summary>Anmeldung & Startgeld</summary><div class="details-body"><p>Teilnahme nur auf Einladung. Bei Interesse Mail mit Name, Vorname, Geschlecht, Jahrgang, ggf. Verein und Lauferfahrung an lafferdeloopchallenge@gmail.com.</p><p>Startgeld: 15 Euro. Zusätzlich freiwillige Spende an das Kinderhospiz Löwenherz.</p></div></details>
-            <details class="info-card"><summary>Vor Ort</summary><div class="details-body"><p>Teilnehmer*innen können sich eine Basis mit Verpflegung direkt neben dem Start-Ziel-Bereich aufbauen. Duschen und Toiletten können im Vereinsheim des TSV Klein Lafferde genutzt werden.</p><p>Übernachtung mit Zelt, Auto oder nach Absprache in der kleinen Turnhalle möglich.</p></div></details>
-            <details class="info-card"><summary>Wertung & DUV</summary><div class="details-body"><p>Gewinner*in ist, wer als Letzte*r eine Runde im Zeitlimit beendet. Alle anderen werden offiziell als DNF gewertet; die zurückgelegte Distanz erscheint trotzdem auf der Ergebnisliste.</p><p>Die Ergebnisliste wird an die DUV Ultramarathon-Statistik übermittelt.</p></div></details>
-            <details class="info-card"><summary>Haftung</summary><div class="details-body"><p>Es wird keine Haftung für Unfälle, Verletzungen aller Art, Diebstahl oder sonstige Schäden übernommen. Teilnehmer*innen akzeptieren diesen Haftungsausschluss mit Überqueren der Startlinie.</p></div></details>
+            <details class="info-card" open>
+              <summary>Basics</summary>
+              <div class="details-body">
+                <p>Die Lafferde Loop Challenge ist ein Backyard Ultra des TSV Klein Lafferde. Start ist am 02.05.2026 um 05:47 Uhr bei Sonnenaufgang.</p>
+                <p>Ort: Münstedter Weg 17, 38268 Lengede.</p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Strecke & GPX</summary>
+              <div class="details-body">
+                <p>6,7 km Rundkurs über befestigte Wege, Stock, Stein und Wald. Die Strecke wird mit Straßenmalkreide markiert. Am Ende bleibt jede*r selbst verantwortlich, auf der Strecke zu bleiben.</p>
+                <p><a class="pill-link" href="https://connect.garmin.com/app/activity/22014434779" target="_blank" rel="noreferrer">GPX / Garmin öffnen</a></p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Regeln</summary>
+              <div class="details-body">
+                <p>Alle Teilnehmer*innen haben 60 Minuten pro Runde. Wer die Runde nicht im Zeitlimit schafft oder nicht zum nächsten Start im Startbereich ist und die Startlinie überquert, scheidet aus.</p>
+                <p>Kein persönlicher Support auf der Strecke. Keine Hilfsmittel wie Stöcke.</p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Anmeldung & Startgeld</summary>
+              <div class="details-body">
+                <p>Teilnahme nur auf Einladung. Bei Interesse Mail mit Name, Vorname, Geschlecht, Jahrgang, ggf. Verein und Lauferfahrung an lafferdeloopchallenge@gmail.com.</p>
+                <p>Startgeld: 15 Euro. Zusätzlich freiwillige Spende an das Kinderhospiz Löwenherz.</p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Vor Ort</summary>
+              <div class="details-body">
+                <p>Teilnehmer*innen können sich eine Basis mit Verpflegung direkt neben dem Start-Ziel-Bereich aufbauen. Duschen und Toiletten können im Vereinsheim des TSV Klein Lafferde genutzt werden.</p>
+                <p>Übernachtung mit Zelt, Auto oder nach Absprache in der kleinen Turnhalle möglich.</p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Wertung & DUV</summary>
+              <div class="details-body">
+                <p>Gewinner*in ist, wer als Letzte*r eine Runde im Zeitlimit beendet. Alle anderen werden offiziell als DNF gewertet; die zurückgelegte Distanz erscheint trotzdem auf der Ergebnisliste.</p>
+                <p>Die Ergebnisliste wird an die DUV Ultramarathon-Statistik übermittelt.</p>
+              </div>
+            </details>
+
+            <details class="info-card">
+              <summary>Haftung</summary>
+              <div class="details-body">
+                <p>Es wird keine Haftung für Unfälle, Verletzungen aller Art, Diebstahl oder sonstige Schäden übernommen. Teilnehmer*innen akzeptieren diesen Haftungsausschluss mit Überqueren der Startlinie.</p>
+              </div>
+            </details>
           </div>
         </div>
       </div>
@@ -184,9 +877,41 @@
         <h2 class="section-title">Ergebnisse, Bilder und Statistik.</h2>
 
         <div class="archive-grid">
-          <article class="archive-card"><div><h3>2025</h3><p class="section-lead">Bilder, Bericht und offizielle Ergebnisse.</p></div><div class="archive-links"><a class="pill-link" href="#">Ergebnisse</a><a class="pill-link" href="#">Bilder & Bericht</a><a class="pill-link" href="#">DUV</a></div></article>
-          <article class="archive-card"><div><h3>2024</h3><p class="section-lead">Archiv der zweiten Ausgabe.</p></div><div class="archive-links"><a class="pill-link" href="#">Ergebnisse</a><a class="pill-link" href="#">Bilder & Bericht</a><a class="pill-link" href="#">DUV</a></div></article>
-          <article class="archive-card"><div><h3>2023</h3><p class="section-lead">Der Beginn der Schleife.</p></div><div class="archive-links"><a class="pill-link" href="#">Ergebnisse</a><a class="pill-link" href="#">Bilder & Bericht</a><a class="pill-link" href="#">DUV</a></div></article>
+          <article class="archive-card">
+            <div><h3>2026</h3><p class="section-lead">Platzhalter – folgt nach dem Event.</p></div>
+            <div class="archive-links">
+              <a class="pill-link" href="#">Ergebnisse</a>
+              <a class="pill-link" href="#">Bilder & Bericht</a>
+              <a class="pill-link" href="#">DUV</a>
+            </div>
+          </article>
+
+          <article class="archive-card">
+            <h3>2025</h3>
+            <div class="archive-links">
+              <a class="pill-link" href="https://drive.google.com/file/d/1h-I7EdZXIxxmvGLydatuwhlmAnJP0Fi4/view" target="_blank">Ergebnisse</a>
+              <a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2025/06/11/bericht-2025/" target="_blank">Bericht</a>
+              <a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=108096" target="_blank">DUV</a>
+            </div>
+          </article>
+
+          <article class="archive-card">
+            <h3>2024</h3>
+            <div class="archive-links">
+              <a class="pill-link" href="https://drive.google.com/file/d/1XtBdwMoy-GQGBqgo3dblA86im-AQ8qkw/view" target="_blank">Ergebnisse</a>
+              <a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2024/06/06/bilder-bericht-2024/" target="_blank">Fotos & Bericht</a>
+              <a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=100254" target="_blank">DUV</a>
+            </div>
+          </article>
+
+          <article class="archive-card">
+            <h3>2023</h3>
+            <div class="archive-links">
+              <a class="pill-link" href="https://drive.google.com/file/d/1wjHx4NT70NTuLJHammazyYx0pGE1Zzg8/view" target="_blank">Ergebnisse</a>
+              <a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2023/08/12/llc-2023-fotos-bericht/" target="_blank">Fotos & Bericht</a>
+              <a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=98576" target="_blank">DUV</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -199,7 +924,7 @@
         <div class="faq-grid">
           <div class="faq-item"><h3>Muss ich schnell sein?</h3><p>Nein. Es geht nicht um Tempo, sondern darum, jede Runde innerhalb von 60 Minuten zu schaffen und wieder zu starten.</p></div>
           <div class="faq-item"><h3>Darf meine Crew helfen?</h3><p>Ja, im Start-Ziel-Bereich. Persönlicher Support auf der Strecke ist nicht erlaubt.</p></div>
-          <div class="faq-item"><h3>Gibt es Verpflegung?</h3><p>Sportler*innen sind für ihre Verpflegung selbst verantwortlich. Im Start-Ziel-Bereich gibt es Wasser, Apfelschorle und Iso.</p></div>
+          <div class="faq-item"><h3>Gibt es Verpflegung?</h3><p>Sportler*innen sind für ihre Verpflegung selbst verantwortlich. Im Start-Ziel-Bereich gibt es Getränke wie Wasser, Apfelschorle und Iso.</p></div>
           <div class="faq-item"><h3>Kann ich übernachten?</h3><p>Ja. Zelt, Auto oder nach Absprache die kleine Turnhalle sind möglich.</p></div>
           <div class="faq-item"><h3>Was passiert beim Ausscheiden?</h3><p>Du wirst offiziell als DNF gewertet, deine gelaufene Distanz erscheint aber auf der Ergebnisliste.</p></div>
           <div class="faq-item"><h3>Wird das an die DUV gemeldet?</h3><p>Ja. Die Ergebnisliste wird an die DUV Ultramarathon-Statistik übermittelt.</p></div>
@@ -210,8 +935,14 @@
     <section class="contact" id="kontakt">
       <div class="wrap">
         <div class="contact-box">
-          <div><div class="section-kicker">Kontakt</div><h2>Willkommen in der Schleife.</h2><p>Die Starterliste ist voll. Wer Interesse hat, kann sich per Mail für die Warteliste melden.</p></div>
-          <div><a class="btn btn-primary" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">lafferdeloopchallenge@gmail.com</a></div>
+          <div>
+            <div class="section-kicker">Kontakt</div>
+            <h2>Willkommen in der Schleife.</h2>
+            <p>Die Starterliste ist voll. Wer Interesse hat, kann sich per Mail für die Warteliste melden.</p>
+          </div>
+          <div>
+            <a class="btn btn-primary" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">lafferdeloopchallenge@gmail.com</a>
+          </div>
         </div>
       </div>
     </section>
@@ -223,12 +954,6 @@
       <span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span>
     </div>
   </footer>
-
-  <div class="lightbox" aria-hidden="true">
-    <button type="button" aria-label="Schließen">×</button>
-    <img src="" alt="">
-  </div>
-
-  <script src="assets/js/site.js"></script>
 </body>
 </html>
+
