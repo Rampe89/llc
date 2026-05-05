@@ -1,14 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1050">
 <defs>
 <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0" stop-color="#050505"/><stop offset=".48" stop-color="#171717"/><stop offset="1" stop-color="#000000"/>
+<stop offset="0" stop-color="#030303"/><stop offset=".50" stop-color="#181818"/><stop offset="1" stop-color="#000000"/>
 </linearGradient>
-<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .08"/></feComponentTransfer></filter>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .10"/></feComponentTransfer></filter>
 </defs>
-<rect width="1800" height="1050" fill="url(#g)"/><rect width="1800" height="1050" filter="url(#grain)" opacity=".8"/>
-<path d="M120 820 C 340 660, 620 720, 860 565 C 1110 405, 1320 420, 1630 520" fill="none" stroke="white" stroke-opacity=".12" stroke-width="8"/>
-<circle cx="1400" cy="230" r="115" fill="white" opacity=".045"/>
-<text x="110" y="170" font-family="Arial Black, Arial" font-size="96" fill="white" letter-spacing="-5">SUNRISE</text>
-<text x="114" y="250" font-family="Arial" font-size="36" fill="#bbbbbb">Galeriebild ersetzen</text>
-<text x="114" y="940" font-family="Arial Black, Arial" font-size="42" fill="white" opacity=".20">Platzhalterbild ersetzen</text>
+<rect width="1800" height="1050" fill="url(#g)"/>
+<rect width="1800" height="1050" filter="url(#grain)" opacity=".8"/>
+<path d="M90 790 C 350 620, 650 700, 900 545 C 1160 385, 1390 440, 1690 495" fill="none" stroke="white" stroke-opacity=".11" stroke-width="8"/>
+<circle cx="1440" cy="230" r="135" fill="white" opacity=".045"/>
+<text x="100" y="175" font-family="Arial Black, Arial" font-size="98" fill="white" letter-spacing="-5">SUNRISE</text>
+<text x="105" y="258" font-family="Arial" font-size="36" fill="#bcbcbc">Galeriebild ersetzen</text>
+<text x="105" y="935" font-family="Arial Black, Arial" font-size="42" fill="white" opacity=".22">Bild ersetzen</text>
 </svg>

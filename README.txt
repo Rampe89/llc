@@ -1,13 +1,13 @@
-LLC Ultra Polish Website
+LLC Ultra Ultra Polish Website
 
 Upload:
 - ZIP entpacken
 - Inhalt direkt zu Netlify ziehen
 - index.html liegt im Hauptverzeichnis
 
-Logos:
+Direkt verwendete Logos:
 - assets/img/logo-llc.png
-- assets/img/logo-tsv.png
+- assets/img/logo-troete.png
 
 Bilder ersetzen:
 - Hero: assets/img/hero-llc.svg
@@ -22,4 +22,4 @@ Bilder ersetzen:
 - Galerie:
   assets/img/gallery/gallery-01.svg bis gallery-06.svg
 
-Archivlinks sind bereits eingebunden.
+Archivlinks 2023–2025 sind eingebunden.
