@@ -1,26 +1,17 @@
-Lafferde Loop Challenge 2026 – Website
+Lafferde Loop Challenge 2026 – Final Brand Fix
 
-Struktur:
-- index.html
-- assets/css/site.css
-- assets/js/site.js
-- assets/img/...
+Diese Version enthält die vollständige Webseite mit allen Assets.
 
-Änderungen in dieser Version:
-- Hero-Bereich professioneller und ruhiger aufgebaut
-- kleine/random Logo-Deko entfernt
-- große schwebende Hintergrundlogos entfernt
-- Branding jetzt über klare Navigation und dezente RUN-LLC-Eventkarte
-- Badge-Sektion als sauberes Platzhalter-System angelegt
-- Platzhalter-Badges liegen unter assets/img/badges/
-- stärkere Typografie, ruhigere Flächen, besserer Kontrast
+Änderungen:
+- Logos oben wieder sichtbar: RUN LLC links, Tröte rechts neben CTA.
+- Hero-Branding neu aufgebaut: zwei kontrollierte Logo-Karten statt zufälliger Deko.
+- Rechter Datum/Ort-Kasten entfernt.
+- Eventdaten sauber unter dem Hero-Text als kleine Karten.
+- Übergang unter dem Hero geglättet; kein harter Farbsprung.
+- Kontakt-Wording geändert: „Willkommen in der Schleife“ entfernt.
+- Badge-Bereich bleibt als neutraler Platzhalter für echte Badge-Dateien.
 
-Badge-Dateien ersetzen:
-Die Platzhalter können einfach durch echte SVG/PNG-Dateien ersetzt werden.
-Entweder gleiche Dateinamen verwenden oder die Bildpfade in index.html anpassen.
+Badge-Dateien liegen unter:
+assets/img/badges/
 
-Wichtige Bildpfade:
-- Hero: assets/img/hero-llc.svg
-- Basecamp/Start/Nacht: assets/img/basecamp.svg, start.svg, night.svg
-- Galerie: assets/img/gallery/gallery-01.svg bis gallery-06.svg
-- Badges: assets/img/badges/*.svg
+Die echten Badges können später dort mit denselben Dateinamen ersetzt werden.
