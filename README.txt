@@ -8,3 +8,6 @@ Geändert:
 - Überlappende/blasse Story-Zeilen durch klare Intro-Sektion ersetzt.
 - Wording „Willkommen in der Schleife“ entfernt.
 - Badge-Sektion nutzt Platzhalter-SVGs unter assets/img/badges/.
+
+
+Update: Kleine Logos im oberen Hero-Bereich entfernt. Tröte als großes, dezentes Hintergrundmotiv im Hero eingesetzt.
