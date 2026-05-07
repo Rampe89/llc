@@ -1,13 +1,25 @@
-LLC Website – sichtbarer Brand/Layout-Fix
+LLC Ultra Ultra Polish Website
 
-Geändert:
-- Logos oben wieder sichtbar und bewusst als Brand-Zeile im Hero platziert.
-- Rechter Ort/Datum-Block im Hero vollständig entfernt.
-- Eventdaten als ruhige Karten unter dem Hero.
-- Harter Hintergrundwechsel direkt nach dem Hero geglättet.
-- Überlappende/blasse Story-Zeilen durch klare Intro-Sektion ersetzt.
-- Wording „Willkommen in der Schleife“ entfernt.
-- Badge-Sektion nutzt Platzhalter-SVGs unter assets/img/badges/.
+Upload:
+- ZIP entpacken
+- Inhalt direkt zu Netlify ziehen
+- index.html liegt im Hauptverzeichnis
 
+Direkt verwendete Logos:
+- assets/img/logo-llc.png
+- assets/img/logo-troete.png
 
-Update: Kleine Logos im oberen Hero-Bereich entfernt. Tröte als großes, dezentes Hintergrundmotiv im Hero eingesetzt.
+Bilder ersetzen:
+- Hero: assets/img/hero-llc.svg
+  Entweder durch hero-llc.jpg ersetzen und in assets/css/site.css ändern:
+  url("../img/hero-llc.svg") -> url("../img/hero-llc.jpg")
+
+- Feeling:
+  assets/img/basecamp.svg
+  assets/img/start.svg
+  assets/img/night.svg
+
+- Galerie:
+  assets/img/gallery/gallery-01.svg bis gallery-06.svg
+
+Archivlinks 2023–2025 sind eingebunden.
