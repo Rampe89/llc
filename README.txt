@@ -1,17 +1,10 @@
-Lafferde Loop Challenge 2026 – Final Brand Fix
+LLC Website – sichtbarer Brand/Layout-Fix
 
-Diese Version enthält die vollständige Webseite mit allen Assets.
-
-Änderungen:
-- Logos oben wieder sichtbar: RUN LLC links, Tröte rechts neben CTA.
-- Hero-Branding neu aufgebaut: zwei kontrollierte Logo-Karten statt zufälliger Deko.
-- Rechter Datum/Ort-Kasten entfernt.
-- Eventdaten sauber unter dem Hero-Text als kleine Karten.
-- Übergang unter dem Hero geglättet; kein harter Farbsprung.
-- Kontakt-Wording geändert: „Willkommen in der Schleife“ entfernt.
-- Badge-Bereich bleibt als neutraler Platzhalter für echte Badge-Dateien.
-
-Badge-Dateien liegen unter:
-assets/img/badges/
-
-Die echten Badges können später dort mit denselben Dateinamen ersetzt werden.
+Geändert:
+- Logos oben wieder sichtbar und bewusst als Brand-Zeile im Hero platziert.
+- Rechter Ort/Datum-Block im Hero vollständig entfernt.
+- Eventdaten als ruhige Karten unter dem Hero.
+- Harter Hintergrundwechsel direkt nach dem Hero geglättet.
+- Überlappende/blasse Story-Zeilen durch klare Intro-Sektion ersetzt.
+- Wording „Willkommen in der Schleife“ entfernt.
+- Badge-Sektion nutzt Platzhalter-SVGs unter assets/img/badges/.
