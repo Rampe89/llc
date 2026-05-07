@@ -1,62 +1,180 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lafferde Loop Challenge 2026 · Backyard Ultra</title>
-  <meta name="description" content="Lafferde Loop Challenge 2026: Backyard Ultra in Klein Lafferde. 6,7 km jede Stunde. Last Person Standing." />
-  <link rel="stylesheet" href="assets/css/site.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lafferde Loop Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+background:#050505;
+color:#fff;
+font-family:Arial,sans-serif;
+overflow-x:hidden;
+background-image:
+linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+background-size:40px 40px;
+}
+.hero{
+min-height:100vh;
+padding:40px 60px;
+position:relative;
+}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 30px;
+border:1px solid rgba(255,255,255,.12);
+border-radius:28px;
+backdrop-filter: blur(12px);
+background:rgba(255,255,255,.03);
+}
+.logo{
+font-weight:900;
+font-size:48px;
+line-height:.9;
+}
+.menu{
+display:flex;
+gap:42px;
+font-weight:700;
+letter-spacing:.08em;
+}
+.menu a{
+color:#fff;
+text-decoration:none;
+font-size:14px;
+}
+.button{
+border:1px solid #c79b43;
+color:#c79b43;
+padding:16px 26px;
+border-radius:16px;
+font-weight:800;
+}
+.content{
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:40px;
+margin-top:80px;
+}
+.eyebrow{
+color:#c79b43;
+letter-spacing:.25em;
+font-size:14px;
+margin-bottom:24px;
+}
+h1{
+font-size:110px;
+line-height:.9;
+font-weight:900;
+max-width:700px;
+}
+.gold{color:#c79b43}
+.sub{
+margin-top:30px;
+font-size:22px;
+line-height:1.5;
+max-width:700px;
+color:#ddd;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-top:60px;
+}
+.card{
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.02);
+border-radius:22px;
+padding:28px;
+}
+.card small{
+display:block;
+opacity:.6;
+margin-bottom:10px;
+letter-spacing:.15em;
+}
+.card strong{
+font-size:28px;
+}
+.hero-image{
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+.hero-image img{
+width:90%;
+max-width:700px;
+opacity:.9;
+filter:sepia(1) saturate(4) hue-rotate(355deg) brightness(.9);
+}
+@media(max-width:1200px){
+.content{grid-template-columns:1fr}
+h1{font-size:72px}
+.cards{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
 <body>
-  <nav class="nav" aria-label="Hauptnavigation">
-    <a class="nav-brand" href="#top" aria-label="Startseite"><img src="assets/img/logo-llc.png" alt="RUN LLC"></a>
-    <div class="nav-links"><a href="#format">Format</a><a href="#feeling">Basecamp</a><a href="#gallery">Galerie</a><a href="#stories">Stimmen</a><a href="#abzeichen">Badges</a><a href="#archiv">Archiv</a></div>
-    <a class="nav-cta" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">Warteliste</a>
-  </nav>
+<section class="hero">
+<nav>
+<div class="logo">RUN<br>LLC</div>
+<div class="menu">
+<a href="#">FORMAT</a>
+<a href="#">BASECAMP</a>
+<a href="#">GALERIE</a>
+<a href="#">STIMMEN</a>
+<a href="#">BADGES</a>
+<a href="#">ARCHIV</a>
+</div>
+<div class="button">WARTELISTE</div>
+</nav>
 
-  <header class="hero" id="top">
-    <div class="hero-noise" aria-hidden="true"></div>
-    <img class="hero-troete" src="assets/img/logo-troete-original.jpg" alt="" aria-hidden="true">
-    <div class="wrap hero-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">Backyard Ultra · Klein Lafferde · 02.05.2026</p>
-        <h1>Lafferde<br>Loop<br>Challenge</h1>
-        <p class="hero-subline">6,7 km. Jede Stunde. Sonnenaufgang. Tröte. Neustart.<br>So lange, bis nur noch eine Person steht.</p>
-      </div>
+<div class="content">
+<div>
+<div class="eyebrow">BACKYARD ULTRA • KLEIN LAFFERDE • 02.05.2026</div>
+<h1>
+ALLE STARTEN GEMEINSAM.<br>
+ALLE HABEN <span class="gold">60 MINUTEN.</span><br>
+ALLE STARTEN WIEDER.<br>
+BIS EINE PERSON ÜBRIG BLEIBT.
+</h1>
 
-      <div class="hero-facts" aria-label="Eventdaten">
-        <div class="fact"><span class="fact-icon">▣</span><small>Datum</small><strong>02.05.2026</strong></div>
-        <div class="fact"><span class="fact-icon">⌖</span><small>Ort</small><strong>Klein Lafferde</strong></div>
-        <div class="fact"><span class="fact-icon">▱</span><small>Rundenlänge</small><strong>6,7 km</strong></div>
-        <div class="fact"><span class="fact-icon">◷</span><small>Regel</small><strong>Jede Stunde. Immer neu.</strong></div>
-      </div>
-    </div>
-  </header>
+<div class="sub">
+6,7 km. Jede Stunde. Sonnenaufgang. Tröte. Neustart.
+</div>
 
-  <main>
-    <section class="scroll-story" aria-label="Prinzip"><div class="wrap"><div class="section-kicker">Das Prinzip</div><h2 class="section-title">Ein simples Format. Eine brutale Wahrheit.</h2><div class="story-lines"><div class="story-line">Alle starten gemeinsam.</div><div class="story-line">Alle haben <span>60 Minuten.</span></div><div class="story-line">Alle starten wieder.</div><div class="story-line is-hot">Bis eine Person übrig bleibt.</div></div></div></section>
+<div class="cards">
+<div class="card">
+<small>DATUM</small>
+<strong>02.05.2026</strong>
+</div>
+<div class="card">
+<small>ORT</small>
+<strong>KLEIN LAFFERDE</strong>
+</div>
+<div class="card">
+<small>RUNDENLÄNGE</small>
+<strong>6,7 KM</strong>
+</div>
+<div class="card">
+<small>REGEL</small>
+<strong>JEDER STARTET STÜNDLICH</strong>
+</div>
+</div>
+</div>
 
-    <section id="format"><div class="wrap"><div class="section-kicker">Backyard Ultra</div><h2 class="section-title">Nicht der Schnellste gewinnt. Sondern wer bleibt.</h2><p class="section-lead">Die LLC ist kein klassischer Wettkampf gegen die Uhr. Jede Runde beginnt neu. Jede volle Stunde stellt dieselbe Frage: Gehst du wieder an die Startlinie?</p><div class="format-grid"><article class="format-card"><div class="num">01</div><div><h3>6,7 km Runde</h3><p>Ein Rundkurs über befestigte Wege, Stock, Stein und Wald.</p></div></article><article class="format-card"><div class="num">02</div><div><h3>60 Minuten</h3><p>Wer rechtzeitig zurück ist, darf die Pause bis zum nächsten Start frei nutzen.</p></div></article><article class="format-card"><div class="num">03</div><div><h3>Neuer Start</h3><p>Nach jeder Stunde starten alle verbliebenen Läufer*innen gemeinsam wieder los.</p></div></article><article class="format-card"><div class="num">04</div><div><h3>Last Person Standing</h3><p>Das Rennen endet, wenn nur noch eine Person eine Runde im Zeitlimit schafft.</p></div></article></div></div></section>
-
-    <section id="feeling"><div class="wrap"><div class="section-kicker">Basecamp</div><h2 class="section-title">Tröte. Zeltstadt. Stirnlampen. Apfelschorle. Zweifel. Weiter.</h2><p class="section-lead">Die LLC lebt nicht nur von der Strecke. Sie lebt vom Start-Ziel-Bereich, von Crews, kurzen Gesprächen, müden Blicken und dieser einen Frage kurz vor jeder vollen Stunde.</p><div class="photo-strip"><figure class="photo-card tall"><img src="assets/img/basecamp.svg" alt="Zelte und Basecamp"><figcaption class="photo-caption">Basecamp direkt am Start-Ziel-Bereich</figcaption></figure><figure class="photo-card"><img src="assets/img/start.svg" alt="Startlinie"><figcaption class="photo-caption">Jede Stunde dieselbe Linie</figcaption></figure><figure class="photo-card tall"><img src="assets/img/night.svg" alt="Nachtstimmung"><figcaption class="photo-caption">Wenn aus Laufen Kopfsache wird</figcaption></figure></div></div></section>
-
-    <section id="gallery"><div class="wrap"><div class="section-kicker">Galerie</div><h2 class="section-title">Bilder aus der Schleife.</h2><p class="section-lead">Die Platzhalter können direkt durch echte Fotos ersetzt werden. Die Lightbox ist schon eingebaut.</p><div class="gallery-grid"><a href="assets/img/gallery-01.svg" data-lightbox><img src="assets/img/gallery-01.svg" alt="Galeriebild 1"></a><a href="assets/img/gallery-02.svg" data-lightbox><img src="assets/img/gallery-02.svg" alt="Galeriebild 2"></a><a href="assets/img/gallery-03.svg" data-lightbox><img src="assets/img/gallery-03.svg" alt="Galeriebild 3"></a><a href="assets/img/gallery-04.svg" data-lightbox><img src="assets/img/gallery-04.svg" alt="Galeriebild 4"></a><a href="assets/img/gallery-05.svg" data-lightbox><img src="assets/img/gallery-05.svg" alt="Galeriebild 5"></a><a href="assets/img/gallery-06.svg" data-lightbox><img src="assets/img/gallery-06.svg" alt="Galeriebild 6"></a></div></div></section>
-
-    <section id="stories"><div class="wrap"><div class="section-kicker">Stimmen vom Backyard</div><h2 class="section-title">Erfahrungen, die nach der letzten Runde bleiben.</h2><p class="section-lead">Hier können echte Erfahrungsberichte aus 2023, 2024 und 2025 rein. Mit Name, Runden, Jahr und Foto wird daraus eine starke Story-Sektion.</p><div class="quote-grid"><article class="quote-card"><blockquote>„Irgendwann läufst du nicht mehr gegen andere. Du führst nur noch Gespräche mit dir selbst.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2025</span><strong>Runden: 12</strong></div></article><article class="quote-card"><blockquote>„Die härteste Runde war nicht die längste. Es war die, bei der ich fast nicht wieder gestartet wäre.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2024</span><strong>Runden: 9</strong></div></article><article class="quote-card"><blockquote>„Backyard klingt simpel. Bis die Tröte wieder ruft.“</blockquote><div class="quote-meta"><span>Teilnehmer*in 2023</span><strong>Runden: 7</strong></div></article></div></div></section>
-
-    <section class="badge-system" id="abzeichen"><div class="wrap badge-layout"><div class="badge-intro"><div class="section-kicker">Badges</div><h2 class="section-title">Platzhalter für das echte Emblem-System.</h2><p class="section-lead">Die Karten sind bewusst neutral gehalten. Später ersetzt du nur die SVG-Dateien durch die finalen Badges.</p></div><div class="badge-row" aria-label="Tierabzeichen"><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-igel.svg" alt="Platzhalter Igel Badge"></div><strong>Igel</strong><small>Level 01</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-eichhoernchen.svg" alt="Platzhalter Eichhörnchen Badge"></div><strong>Eichhörnchen</strong><small>Level 02</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-waschbaer.svg" alt="Platzhalter Waschbär Badge"></div><strong>Waschbär</strong><small>Level 03</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-fuchs.svg" alt="Platzhalter Fuchs Badge"></div><strong>Fuchs</strong><small>Level 04</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-baer.svg" alt="Platzhalter Bär Badge"></div><strong>Bär</strong><small>Level 05</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-fledermaus.svg" alt="Platzhalter Fledermaus Badge"></div><strong>Fledermaus</strong><small>Level 06</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-hirsch.svg" alt="Platzhalter Hirsch Badge"></div><strong>Hirsch</strong><small>Level 07</small></div><div class="badge-card"><div class="badge-placeholder"><img src="assets/img/badges/badge-eule.svg" alt="Platzhalter Eule Badge"></div><strong>Eule</strong><small>Level 08</small></div></div></div></section>
-
-    <section id="ausschreibung"><div class="wrap"><div class="section-kicker">Ausschreibung 2026</div><h2 class="section-title">Alle wichtigen Infos. Ohne Textwand.</h2><div class="info-layout"><aside class="info-sticky"><h3>LLC 2026</h3><p><strong>02.05.2026 · 05:47 Uhr</strong><br>Münstedter Weg 17, 38268 Lengede</p><p>Starterliste voll. Eine Warteliste wird eingerichtet.</p><a class="btn btn-primary" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">Warteliste anfragen</a></aside><div class="info-list"><details class="info-card" open><summary>Basics</summary><div class="details-body"><p>Die Lafferde Loop Challenge ist ein Backyard Ultra des TSV Klein Lafferde. Start ist am 02.05.2026 um 05:47 Uhr bei Sonnenaufgang.</p><p>Ort: Münstedter Weg 17, 38268 Lengede.</p></div></details><details class="info-card"><summary>Strecke & GPX</summary><div class="details-body"><p>6,7 km Rundkurs über befestigte Wege, Stock, Stein und Wald. Die Strecke wird mit Straßenmalkreide markiert. Am Ende bleibt jede*r selbst verantwortlich, auf der Strecke zu bleiben.</p><p><a class="pill-link" href="https://connect.garmin.com/app/activity/22014434779" target="_blank" rel="noreferrer">GPX / Garmin öffnen</a></p></div></details><details class="info-card"><summary>Regeln</summary><div class="details-body"><p>Alle Teilnehmer*innen haben 60 Minuten pro Runde. Wer die Runde nicht im Zeitlimit schafft oder nicht zum nächsten Start im Startbereich ist und die Startlinie überquert, scheidet aus.</p><p>Kein persönlicher Support auf der Strecke. Keine Hilfsmittel wie Stöcke.</p></div></details><details class="info-card"><summary>Anmeldung & Startgeld</summary><div class="details-body"><p>Teilnahme nur auf Einladung. Bei Interesse Mail mit Name, Vorname, Geschlecht, Jahrgang, ggf. Verein und Lauferfahrung an lafferdeloopchallenge@gmail.com.</p><p>Startgeld: 15 Euro. Zusätzlich freiwillige Spende an das Kinderhospiz Löwenherz.</p></div></details><details class="info-card"><summary>Vor Ort</summary><div class="details-body"><p>Teilnehmer*innen können sich eine Basis mit Verpflegung direkt neben dem Start-Ziel-Bereich aufbauen. Duschen und Toiletten können im Vereinsheim des TSV Klein Lafferde genutzt werden.</p><p>Übernachtung mit Zelt, Auto oder nach Absprache in der kleinen Turnhalle möglich.</p></div></details><details class="info-card"><summary>Wertung & DUV</summary><div class="details-body"><p>Gewinner*in ist, wer als Letzte*r eine Runde im Zeitlimit beendet. Alle anderen werden offiziell als DNF gewertet; die zurückgelegte Distanz erscheint trotzdem auf der Ergebnisliste.</p><p>Die Ergebnisliste wird an die DUV Ultramarathon-Statistik übermittelt.</p></div></details><details class="info-card"><summary>Haftung</summary><div class="details-body"><p>Es wird keine Haftung für Unfälle, Verletzungen aller Art, Diebstahl oder sonstige Schäden übernommen. Teilnehmer*innen akzeptieren diesen Haftungsausschluss mit Überqueren der Startlinie.</p></div></details></div></div></div></section>
-
-    <section id="archiv"><div class="wrap"><div class="section-kicker">Hall of Loops</div><h2 class="section-title">Ergebnisse, Bilder und Statistik.</h2><div class="archive-grid"><article class="archive-card"><div><h3>2026</h3><p class="section-lead">Platzhalter – folgt nach dem Event.</p></div><div class="archive-links"><a class="pill-link" href="#">Ergebnisse</a><a class="pill-link" href="#">Bilder & Bericht</a><a class="pill-link" href="#">DUV</a></div></article><article class="archive-card"><h3>2025</h3><div class="archive-links"><a class="pill-link" href="https://drive.google.com/file/d/1h-I7EdZXIxxmvGLydatuwhlmAnJP0Fi4/view" target="_blank">Ergebnisse</a><a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2025/06/11/bericht-2025/" target="_blank">Bericht</a><a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=108096" target="_blank">DUV</a></div></article><article class="archive-card"><h3>2024</h3><div class="archive-links"><a class="pill-link" href="https://drive.google.com/file/d/1XtBdwMoy-GQGBqgo3dblA86im-AQ8qkw/view" target="_blank">Ergebnisse</a><a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2024/06/06/bilder-bericht-2024/" target="_blank">Fotos & Bericht</a><a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=100254" target="_blank">DUV</a></div></article><article class="archive-card"><h3>2023</h3><div class="archive-links"><a class="pill-link" href="https://drive.google.com/file/d/1wjHx4NT70NTuLJHammazyYx0pGE1Zzg8/view" target="_blank">Ergebnisse</a><a class="pill-link" href="https://lafferdeloopchallenge.wordpress.com/2023/08/12/llc-2023-fotos-bericht/" target="_blank">Fotos & Bericht</a><a class="pill-link" href="https://statistik.d-u-v.org/getresultevent.php?event=98576" target="_blank">DUV</a></div></article></div></div></section>
-
-    <section id="faq"><div class="wrap"><div class="section-kicker">FAQ</div><h2 class="section-title">Kurz geklärt.</h2><div class="faq-grid"><div class="faq-item"><h3>Muss ich schnell sein?</h3><p>Nein. Es geht nicht um Tempo, sondern darum, jede Runde innerhalb von 60 Minuten zu schaffen und wieder zu starten.</p></div><div class="faq-item"><h3>Darf meine Crew helfen?</h3><p>Ja, im Start-Ziel-Bereich. Persönlicher Support auf der Strecke ist nicht erlaubt.</p></div><div class="faq-item"><h3>Gibt es Verpflegung?</h3><p>Sportler*innen sind für ihre Verpflegung selbst verantwortlich. Im Start-Ziel-Bereich gibt es Wasser, Apfelschorle und Iso.</p></div><div class="faq-item"><h3>Kann ich übernachten?</h3><p>Ja. Zelt, Auto oder nach Absprache die kleine Turnhalle sind möglich.</p></div><div class="faq-item"><h3>Was passiert beim Ausscheiden?</h3><p>Du wirst offiziell als DNF gewertet, deine gelaufene Distanz erscheint aber auf der Ergebnisliste.</p></div><div class="faq-item"><h3>Wird das an die DUV gemeldet?</h3><p>Ja. Die Ergebnisliste wird an die DUV Ultramarathon-Statistik übermittelt.</p></div></div></div></section>
-
-    <section class="contact" id="kontakt"><div class="wrap"><div class="contact-box"><div><div class="section-kicker">Kontakt</div><h2>Bereit für die nächste Runde?</h2><p>Die Starterliste ist voll. Wer Interesse hat, kann sich per Mail für die Warteliste melden.</p></div><div><a class="btn btn-primary" href="mailto:lafferdeloopchallenge@gmail.com?subject=Warteliste%20LLC%202026">lafferdeloopchallenge@gmail.com</a></div></div></div></section>
-  </main>
-
-  <footer><div class="wrap footer-inner"><span>Lafferde Loop Challenge · TSV Klein Lafferde</span><span><a href="#">Impressum</a> · <a href="#">Datenschutz</a></span></div></footer>
-  <div class="lightbox" aria-hidden="true"><button type="button" aria-label="Schließen">×</button><img src="" alt=""></div>
-  <script src="assets/js/site.js"></script>
+<div class="hero-image">
+<img src="assets/img/logo-troete.png" alt="Tröte">
+</div>
+</div>
+</section>
 </body>
 </html>
