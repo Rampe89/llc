@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+locale: "de"
+
+collections:
+  - name: "settings"
+    label: "Website Einstellungen"
+    files:
+      - label: "Globale Daten"
+        name: "site"
+        file: "src/_data/site.json"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+          - {label: "Untertitel", name: "subtitle", widget: "string"}
+          - {label: "Datum", name: "date", widget: "string"}
+          - {label: "Startzeit", name: "startTime", widget: "string"}
+          - {label: "Distanz", name: "distance", widget: "string"}
+          - {label: "Zeitlimit", name: "timeLimit", widget: "string"}
+          - {label: "Höhenmeter", name: "elevation", widget: "string"}
+          - {label: "Ort", name: "location", widget: "string"}
+          - {label: "E-Mail", name: "email", widget: "string"}
+          - {label: "RaceResult Link", name: "registrationUrl", widget: "string"}
+          - {label: "Ausschreibung Link", name: "announcementUrl", widget: "string"}
+          - {label: "GPX/Garmin Link", name: "gpxUrl", widget: "string"}
+          - {label: "Veranstalter", name: "organizer", widget: "string"}
+  - name: "pages"
+    label: "Seiten"
+    files:
+      - {label: "Event", name: "event", file: "src/event/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+      - {label: "Strecke", name: "strecke", file: "src/strecke/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+      - {label: "Anmeldung", name: "anmeldung", file: "src/anmeldung/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+      - {label: "Kontakt", name: "kontakt", file: "src/kontakt/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+      - {label: "Impressum", name: "impressum", file: "src/impressum/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+      - {label: "Datenschutz", name: "datenschutz", file: "src/datenschutz/index.md", fields: [{label: "Titel", name: "title", widget: "string"}, {label: "Inhalt", name: "body", widget: "markdown"}]}
+  - name: "results"
+    label: "Ergebnisse"
+    folder: "src/ergebnisse"
+    create: true
+    slug: "{{year}}"
+    fields:
+      - {label: "Titel", name: "title", widget: "string"}
+      - {label: "Jahr", name: "year", widget: "number"}
+      - {label: "Beschreibung", name: "description", widget: "string", required: false}
+      - {label: "Ergebnisse Link", name: "resultsUrl", widget: "string", required: false}
+      - {label: "Bilder/Bericht Link", name: "photosUrl", widget: "string", required: false}
+      - {label: "DUV Link", name: "duvUrl", widget: "string", required: false}
+      - {label: "Inhalt", name: "body", widget: "markdown", required: false}
+  - name: "faq"
+    label: "FAQ"
+    folder: "src/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Frage", name: "question", widget: "string"}
+      - {label: "Reihenfolge", name: "order", widget: "number", default: 10}
+      - {label: "Antwort", name: "body", widget: "markdown"}
