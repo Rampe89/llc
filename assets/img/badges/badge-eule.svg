@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-<rect width="500" height="500" rx="82" fill="#080808"/>
-<circle cx="250" cy="250" r="170" fill="none" stroke="#c8a25f" stroke-width="14"/>
-<circle cx="250" cy="250" r="126" fill="#121212" stroke="rgba(255,255,255,.28)" stroke-width="4"/>
-<text x="250" y="230" text-anchor="middle" fill="#f2f2f2" font-family="Arial Black,Arial,sans-serif" font-size="54">BADGE</text>
-<text x="250" y="292" text-anchor="middle" fill="#c8a25f" font-family="Arial Black,Arial,sans-serif" font-size="52">08</text>
-<text x="250" y="360" text-anchor="middle" fill="#8f8f8f" font-family="Arial, sans-serif" font-size="24" letter-spacing="3">PLATZHALTER</text>
-</svg>
