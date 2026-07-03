@@ -1,0 +1,29 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+collections:
+  - name: "pages"
+    label: "Seiten"
+    files:
+      - label: "Startseite"
+        name: "home"
+        file: "content/pages/home.yml"
+        fields:
+          - {label: "Datum", name: "date", widget: "string"}
+          - {label: "Startzeit", name: "start_time", widget: "string"}
+          - {label: "RaceResult Link", name: "raceresult", widget: "string", required: false}
+          - {label: "Ausschreibung", name: "ausschreibung", widget: "file", required: false}
+          - {label: "GPX/Garmin", name: "gpx", widget: "string", required: false}
+          - {label: "Kontakt", name: "contact", widget: "string"}
+  - name: "results"
+    label: "Ergebnisse"
+    folder: "content/results"
+    create: true
+    slug: "{{year}}"
+    fields:
+      - {label: "Jahr", name: "year", widget: "string"}
+      - {label: "Ergebnisse", name: "results_url", widget: "string", required: false}
+      - {label: "Bilder/Bericht", name: "gallery_url", widget: "string", required: false}
+      - {label: "DUV", name: "duv_url", widget: "string", required: false}
